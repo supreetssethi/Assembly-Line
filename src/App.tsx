@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import AssemblyLine from './AssemblyLine';
 
 function App() {
   return (
@@ -7,6 +8,9 @@ function App() {
       <header className="App-header">
         <h1>Assembly Line</h1>
       </header>
+      <main>
+        <AssemblyLine stages={[]}/>
+      </main>
     </div>
   );
 }
