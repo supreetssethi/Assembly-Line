@@ -4,7 +4,7 @@ import { Task } from "./commonInterfaces";
 interface NewTaskInterfaces {
   newTaskHandler: Function;
 }
-function NewTask(props: NewTaskInterfaces) {
+const NewTask = (props: NewTaskInterfaces) => {
   const { newTaskHandler } = props;
   const [taskValue, setTaskValue] = useState<Task>("");
   return (
