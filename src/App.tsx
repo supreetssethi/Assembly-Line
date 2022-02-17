@@ -9,7 +9,7 @@ function App() {
         <h1>Assembly Line</h1>
       </header>
       <main>
-        <AssemblyLine stages={[]}/>
+        <AssemblyLine stages={['Idea','Development','Testing','Deployment']}/>
       </main>
     </div>
   );
