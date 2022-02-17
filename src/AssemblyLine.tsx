@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./AssemblyLine.css";
-import { Task } from "./commonInterfaces";
+import { StageAndTaskList, Task } from "./commonInterfaces";
 import NewTask from "./NewTask";
+import { mapStageToTaskList } from "./util";
 
 interface AssemblyLineInterface {
   stages: Array<string>;
@@ -9,26 +10,25 @@ interface AssemblyLineInterface {
 
 function AssemblyLine(props: AssemblyLineInterface) {
   const { stages } = props;
-  const [assemblyTasksList, setAssemblyTasksList] = useState<
-    Array<Array<Task>>
-  >([]);
-
+  const [assemblyTasksList, setAssemblyTasksList] = useState<StageAndTaskList>(mapStageToTaskList(stages));
+ 
+  const handleAddNewTask = (newTask:Task) => {
+  }
   // handled emtpy stages step
   if (!stages.length) return <>There are no stages setup in assembly.</>;
-
   return (
     <div className="assembly-line">
       <NewTask newTaskHandler={(task: Task)=>{console.log(task)}}/>
       <div className="stages">
-        {stages.map((stage, index) => (
-          <div key={index} className="stage">
-            <h2>{stage}</h2>
-            <div className="task-list">
-              {assemblyTasksList?.[index]?.map((taskItem, index) => (
+        {Object.keys(assemblyTasksList).map((stage)=>(
+           <div key={stage} className="stage">
+           <h2>{stage}</h2>
+           <div className="task-list">
+              {assemblyTasksList[stage].map((taskItem, index) => (
                 <div key={index}>task</div>
               ))}
             </div>
-          </div>
+           </div>
         ))}
       </div>
     </div>
